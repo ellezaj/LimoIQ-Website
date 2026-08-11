@@ -5,10 +5,10 @@ export default function Contact() {
         <div>
           <p className="eyebrow mb-4">Contact Us</p>
           <h2 className="text-3xl leading-tight md:text-4xl">
-            We're here to help.
+            We&apos;re here to help.
           </h2>
           <p className="mt-5 max-w-md text-graphite">
-            We'd love to hear from you — whether it's feedback on a past ride or a special request for an upcoming trip.
+            We&apos;d love to hear from you — whether it&apos;s feedback on a past ride or a special request for an upcoming trip.
           </p>
         </div>
 
