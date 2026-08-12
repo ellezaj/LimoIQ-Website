@@ -1,19 +1,26 @@
+import Image from "next/image";
+
 const navLinks = [
-	{ label: "About Us", href: "#platform" },
-	{ label: "Platform", href: "#platform" },
-	{ label: "Product Tour", href: "#pricing" }, // include gallery of screenshots and demo videos
-	{ label: "Pricing", href: "#pricing" },
-	// { label: "Beta Program", href: "#beta" },
-	{ label: "FAQ", href: "#faq" },
-	{ label: "Contact Us", href: "#faq" },
+	{ label: "About Us", href: "/#about" },
+	{ label: "The Platform", href: "/#platform" },
+	{ label: "Our Products", href: "/product" },
+	{ label: "Pricing", href: "/#pricing" },
+	{ label: "Contact Us", href: "/#contact" },
 ];
 
 export default function Header() {
 	return (
 		<header className="sticky top-0 z-50 border-b border-panelLine/60 bg-ink/90 backdrop-blur">
 			<div className="container-content flex h-16 items-center justify-between">
-				<a href="#top" className="font-display text-lg tracking-tight text-cream">
-					<img src="./logo transparent.png" className="w-40" />
+				<a href="/#" className="font-display text-lg tracking-tight text-cream">
+					<Image
+						src="/logo transparent.png"
+						alt="LIMO IQ"
+						width={160}
+						height={40}
+						className="h-10 w-auto"
+						priority
+					/>
 				</a>
 
 				<nav className="hidden gap-8 md:flex">
@@ -29,7 +36,7 @@ export default function Header() {
 				</nav>
 
 				<a
-					href="#beta"
+					href="/#contact"
 					className="rounded-full border border-brass/60 px-4 py-2 text-sm font-medium text-brass transition-colors hover:bg-brass hover:text-ink"
 				>
 					Request a Demo
