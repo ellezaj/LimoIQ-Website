@@ -1,4 +1,6 @@
+import Image from "next/image";
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PlaceholderShot from "@/components/PlaceholderShot";
@@ -42,11 +44,13 @@ export default function ProductPage() {
         </div>
       </section>
       {/* Full feature list, by app */}
-      <PlatformTabs
-        id="platform"
-        eyebrow="Full feature list"
-        heading="Every feature, every app."
-      />
+      <Suspense fallback={<div className="border-t border-panelLine/60 bg-panel py-20 md:py-28" /> }>
+        <PlatformTabs
+          id="platform"
+          eyebrow="Full feature list"
+          heading="Every feature, every app."
+        />
+      </Suspense>
 
       {/* Demo video */}
       <section className="border-t border-panelLine/60 py-16 md:py-20">

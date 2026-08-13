@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -15,17 +16,19 @@ export default function Home() {
             <Header />
             <Hero />
             <About />
-            <PlatformTabs
-                id="platform"
-                eyebrow="The platform"
-                heading="Everything an operator needs, none of what gets in the way."
-                intro={
-                    <>
-                        See <a href="/#pricing" className="text-brass underline underline-offset-4">full pricing</a>{" "} for side-by-side breakdown.
-                    </>
-                }
-                outro
-            />
+            <Suspense fallback={<div className="border-t border-panelLine/60 bg-panel py-20 md:py-28" /> }>
+                <PlatformTabs
+                    id="platform"
+                    eyebrow="The platform"
+                    heading="Everything an operator needs, none of what gets in the way."
+                    intro={
+                        <>
+                            See <a href="/#pricing" className="text-brass underline underline-offset-4">full pricing</a>{" "} for side-by-side breakdown.
+                        </>
+                    }
+                    outro
+                />
+            </Suspense>
             <Pricing />
             {/* <FAQ /> */}
             <Contact />
