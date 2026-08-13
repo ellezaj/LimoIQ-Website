@@ -56,17 +56,7 @@ export default function ProductPage() {
 
           <div className="mt-8 flex aspect-video w-full max-w-3xl items-center justify-center rounded-2xl border border-dashed border-panelLine bg-ink/40">
             <div className="flex flex-col items-center gap-3 px-6 text-center">
-              <div className="flex h-14 w-14 items-center justify-center rounded-full border border-brass/50 text-brass">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </div>
-              <span className="text-sm font-medium text-slate">
-                Demo video coming soon
-              </span>
-              <span className="max-w-xs text-xs text-slate/60">
-                
-              </span>
+					    <video src="./videos/customer-create-trip.mkv" autoPlay preload="auto" loop playsInline disablePictureInPicture disableRemotePlayback muted></video>
             </div>
           </div>
         </div>
@@ -76,12 +66,39 @@ export default function ProductPage() {
       <section className="border-t border-panelLine/60 bg-panel py-16 md:py-20">
         <div className="container-content">
           <p className="eyebrow mb-4">Gallery</p>
-          <h2 className="text-2xl text-cream md:text-3xl">The platform, in screenshots.</h2>
+          <h2 className="text-2xl text-cream md:text-3xl">The platform, in a glimpse.</h2>
 
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {galleryShots.map((label) => (
+            {/* {galleryShots.map((label) => (
               <PlaceholderShot key={label} label={label} aspect="aspect-[4/3]" />
-            ))}
+            ))} */}
+            <div className="aspect-[4/3]">
+					    <video src="./videos/customer-pages-overview.mkv" autoPlay preload="auto" loop playsInline disablePictureInPicture disableRemotePlayback muted></video>
+            </div>  
+            <div className="aspect-[4/3]">
+					    <video src="./videos/admin-pages-overview.mkv" autoPlay preload="auto" loop playsInline disablePictureInPicture disableRemotePlayback muted></video>
+            </div>  
+            <div className="aspect-[4/3]">
+					    <video src="./videos/admin-trip-assignment.mkv" autoPlay preload="auto" loop playsInline disablePictureInPicture disableRemotePlayback muted></video>
+            </div>
+            <div className="aspect-[4/3]">
+					    <img
+                src="./screenshots/driver/home.png"
+                className="w-full rounded-xl object-cover"
+              />
+            </div>
+            <div className="aspect-[4/3]">
+					    <img
+                src="./screenshots/driver/review-trip.png"
+                className="w-full rounded-xl object-cover"
+              />
+            </div>
+            <div className="aspect-[4/3]">
+					    <img
+                src="./screenshots/driver/vehicle-inspection.png"
+                className="w-full rounded-xl object-cover"
+              />
+            </div>
           </div>
         </div>
       </section>

@@ -1,4 +1,4 @@
-export type Tier = "Basic" | "Plus" | "Premium";
+export type Tier = "Basic" | "Plus" | "Premium" | "Add-on";
 
 export type Feature = {
   name: string;
@@ -7,6 +7,7 @@ export type Feature = {
 
 export type FeatureGroup = {
   label: string;
+  slug: string;
   title: string;
   description: string;
   image: string;
@@ -16,6 +17,7 @@ export type FeatureGroup = {
 export const featureGroups: FeatureGroup[] = [
   {
     label: "Customer App",
+    slug: "customer-app",
     title: "Booking that doesn't lose the customer.",
     description:
       "One-way, round trip, or hourly — customers book online in a few taps, with flight tracking, saved payment methods, and instant confirmation built in.",
@@ -35,6 +37,7 @@ export const featureGroups: FeatureGroup[] = [
   },
   {
     label: "Driver App",
+    slug: "driver-app",
     title: "One app, full visibility.",
     description:
       "Trip offers, real-time tracking, digital vehicle inspections, and payouts — everything a chauffeur needs on the road, in one app they'll actually want to use.",
@@ -48,10 +51,12 @@ export const featureGroups: FeatureGroup[] = [
       { name: "In-app messaging (dispatch & passenger)", tier: "Premium" },
       { name: "Payouts & earnings dashboard", tier: "Premium" },
       { name: "Driver profile & support", tier: "Premium" },
+      { name: "24/7 customer technical support", tier: "Premium" },
     ],
   },
   {
     label: "Admin Dashboard",
+    slug: "admin-dashboard",
     title: "Run the business, not the spreadsheets.",
     description:
       "Dispatch, reservations, reporting, and CRM — a back office built around how operators actually work day to day, not retrofitted from generic taxi software.",
@@ -70,6 +75,37 @@ export const featureGroups: FeatureGroup[] = [
       { name: "Alert rules", tier: "Premium" },
       { name: "Integration settings", tier: "Premium" },
       { name: "Security & user management", tier: "Premium" },
+    ],
+  },
+  {
+    label: "Dispatch App",
+    slug: "dispatch-app",
+    title: "See every vehicle, assign every trip.",
+    description:
+      "A live dispatch board that matches drivers to trips, flags conflicts before they happen, and lets dispatchers reassign in real time — even across multiple locations.",
+    image: "/screenshots/dispatch_overview.png",
+    features: [
+      { name: "Live dispatch board", tier: "Plus" },
+      { name: "Automated driver-trip matching", tier: "Plus" },
+      { name: "Conflict & double-booking alerts", tier: "Plus" },
+      { name: "Real-time reassignment", tier: "Premium" },
+      { name: "Multi-location dispatch view", tier: "Premium" },
+      { name: "Dispatcher performance metrics", tier: "Premium" },
+    ],
+  },
+  {
+    label: "Add on Modules",
+    slug: "add-on-modules",
+    title: "Extend the platform as you grow.",
+    description:
+      "Optional modules you can add to any plan — pick what your business actually needs, skip what it doesn't.",
+    image: "/screenshots/addons_overview.png",
+    features: [
+      { name: "Corporate & business accounts", tier: "Add-on" },
+      { name: "Event Packages", tier: "Add-on" },
+      { name: "Multi-location management", tier: "Add-on" },
+      { name: "White-label branding", tier: "Add-on" },
+      { name: "Customization of SMS & email notifications", tier: "Add-on" },
     ],
   },
 ];

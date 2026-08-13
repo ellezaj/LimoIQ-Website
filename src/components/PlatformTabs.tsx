@@ -1,14 +1,27 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
+import { useSearchParams } from "next/navigation";
 import { featureGroups, type Tier } from "@/lib/features";
-import { BookUser, BrickWallShield, UsersRound } from 'lucide-react';
+import { UsersRound, BookUser, BrickWallShield, Navigation, Blocks } from "lucide-react";
+import PlaceholderShot from "@/components/PlaceholderShot";
 
 const tierStyles: Record<Tier, string> = {
   Basic: "border-slate/40 text-slate",
   Plus: "border-brass/50 text-brass",
   Premium: "border-brass bg-brass/10 text-brass",
+  "Add-on": "border-dashed border-slate/50 text-slate",
 };
+
+const tabIcons = [UsersRound, BookUser, BrickWallShield, Navigation, Blocks];
+const galleryShots = [
+  "Customer App — booking flow",
+  "Customer App — trip dashboard",
+  "Driver App — today's assignment",
+  "Driver App — vehicle inspection",
+  "Admin Dashboard — dispatch board",
+  "Admin Dashboard — reporting & analytics",
+];
 
 type Props = {
   id?: string;
@@ -28,8 +41,16 @@ export default function PlatformTabs({
   outro,
 }: Props) {
   const [active, setActive] = useState(0);
-  const group = featureGroups[active];
-  const tabIcons = [UsersRound, BookUser, BrickWallShield];
+  const searchParams = useSearchParams();
+
+  // Deep-link support: /?tab=driver-app (or /product?tab=driver-app)
+  // opens this section with the matching tab already selected.
+  useEffect(() => {
+    const requested = searchParams.get("tab");
+    if (!requested) return;
+    const index = featureGroups.findIndex((g) => g.slug === requested);
+    if (index !== -1) setActive(index);
+  }, [searchParams]);
 
   return (
     <section id={id} className="border-t border-panelLine/60 bg-panel py-20 md:py-28">
@@ -39,10 +60,7 @@ export default function PlatformTabs({
         {intro && <div className="mt-4 max-w-lg text-sm text-slate">{intro}</div>}
 
         <div className="mt-14 grid gap-10">
-          {/* Tab nav — horizontal scroll on mobile, vertical list on desktop   
-          className="mt-14 grid gap-10 md:grid-cols-[220px_1fr] md:gap-12">
-          className="flex gap-2 overflow-x-auto pb-2 md:flex-col md:overflow-visible md:pb-0"
-          */}
+          {/* Tab nav */}
           <div
             role="tablist"
             aria-label="Platform apps"
@@ -53,7 +71,7 @@ export default function PlatformTabs({
 
               return (
                 <button
-                  key={g.label}
+                  key={g.slug}
                   role="tab"
                   aria-selected={i === active}
                   onClick={() => setActive(i)}
@@ -63,59 +81,72 @@ export default function PlatformTabs({
                       : "border-transparent text-slate hover:border-panelLine hover:text-cream"
                   }`}
                 >
-                  <Icon className="mr-2 inline" />
+                  <Icon className="mr-2 inline h-4 w-4" />
                   {g.label}
                 </button>
               );
             })}
           </div>
 
-          {/* Active tab content */}
-          <div
-            className={`grid gap-10 items-center ${showShot ? "md:grid-cols-2 md:gap-12" : ""}`}
-          >
-            <div>
-              <h3 className="text-2xl text-cream"> {group.title}</h3>
-              <p className="mt-3 max-w-md text-sm leading-relaxed text-slate">
-                {group.description}
-              </p>
-              <ul className="mt-6 space-y-3">
-                {group.features.map((feature) => (
-                  <li
-                    key={feature.name}
-                    className="flex items-start justify-between gap-3 text-sm leading-relaxed text-slate"
-                  >
-                    <span className="flex items-start gap-2.5">
-                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-brass" />
-                      <span className="text-cream">{feature.name}</span>
-                    </span>
-                    {/* <span
-                      className={`shrink-0 rounded-full border px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide ${
-                        tierStyles[feature.tier]
-                      }`}
-                    >
-                      {feature.tier}
-                    </span> */}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            {showShot && (
-              <img
-                src={group.image}
-                alt={`${group.label} preview`}
-                className="w-full rounded-xl object-cover"
-                // className="w-full rounded-xl border border-panelLine/60 object-cover shadow-[0_0_0_1px_rgba(255,255,255,0.02)]"
-              />
-            )}
-            {outro && (
+          {/* Sliding carousel of tab panels */}
+          <div className="overflow-hidden">
+            <div
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${active * 100}%)` }}
+            >
+              {featureGroups.map((group) => (
+                <div
+                  key={group.slug}
+                  className={`grid w-full shrink-0 items-center gap-10 pr-1 ${
+                    showShot ? "md:grid-cols-2 md:gap-12" : ""
+                  }`}
+                >
+                  <div>
+                    <h3 className="text-2xl text-cream">{group.title}</h3>
+                    <p className="mt-3 max-w-md text-sm leading-relaxed text-slate">
+                      {group.description}
+                    </p>
+                    <ul className="mt-6 space-y-3">
+                      {group.features.map((feature) => (
+                        <li
+                          key={feature.name}
+                          className="flex items-start justify-between gap-3 text-sm leading-relaxed text-slate"
+                        >
+                          <span className="flex items-start gap-2.5">
+                            <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-brass" />
+                            <span className="text-cream">{feature.name}</span>
+                          </span>
+                          {/* <span
+                            className={`shrink-0 rounded-full border px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide ${
+                              tierStyles[feature.tier]
+                            }`}
+                          >
+                            {feature.tier}
+                          </span> */}
+                        </li>
+                      ))}
+                    </ul>
+
+                    {outro && (
                       <a
-                href="/product"
-                className="mr-auto rounded-full border border-brass/60 px-4 py-2 text-sm font-medium text-brass transition-colors hover:bg-brass hover:text-ink"
-              >
-                Learn More
-              </a>
-            )}
+                        href="/product"
+                        className="mt-6 inline-block rounded-full border border-brass/60 px-4 py-2 text-sm font-medium text-brass transition-colors transition-transform hover:-translate-y-0.5 hover:bg-brass hover:text-ink"
+                      >
+                        Learn More
+                      </a>
+                    )}
+                  </div>
+
+                  {showShot && (
+                    <img
+                      src={group.image}
+                      alt={`${group.label} preview`}
+                      className="w-full rounded-xl object-cover"
+                    />
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

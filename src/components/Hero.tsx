@@ -1,4 +1,6 @@
 import RouteLine from "./RouteLine";
+import ReservationWidget from "./ReservationWidget";
+import Image from "next/image";
 
 export default function Hero() {
 	return (
@@ -25,20 +27,27 @@ export default function Hero() {
 						href="#pricing"
 						className="rounded-full bg-brass px-6 py-3 text-sm font-semibold text-ink transition-transform hover:-translate-y-0.5"
 						>
-							Try for Free
+							Start Free Trial
 						</a>
-						<a
+						{/* <a
 						href="/#contact"
 						className="rounded-full border border-panelLine px-6 py-3 text-sm font-medium text-cream transition-colors hover:border-brass"
 						>
 							Request a Demo
-						</a>
+						</a> */}
 					</div>
-					<video src="./hero.mp4" autoPlay preload="auto" loop playsInline disablePictureInPicture disableRemotePlayback webkit-playsinline muted></video>
+					<video src="./hero.mp4" autoPlay preload="auto" loop playsInline disablePictureInPicture disableRemotePlayback muted></video>
 				</div>
 
-				<div className="flex justify-center">
-					{/* <RouteLine /> */}
+				<div className="flex justify-center rounded-full">
+					{/* <ReservationWidget /> */}
+					<Image
+						src="/reservation_form.png"
+						alt="LIMO IQ reservation form"
+						width={420}
+						height={640}
+						className="cursor-pointer rounded-2xl border border-white/10 shadow-2xl shadow-brass/20 transition-transform hover:-translate-y-1"
+					/>
 				</div> 
 			</div>
 		</section>

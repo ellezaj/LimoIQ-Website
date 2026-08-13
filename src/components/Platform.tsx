@@ -4,6 +4,7 @@ const tierStyles: Record<Tier, string> = {
   Basic: "border-slate/40 text-slate",
   Plus: "border-brass/50 text-brass",
   Premium: "border-brass bg-brass/10 text-brass",
+ 'Add-on': "border-brass bg-brass/10 text-brass",
 };
 
 export default function Platform() {

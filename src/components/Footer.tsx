@@ -14,6 +14,7 @@ export default function Footer() {
                         <h2 className="max-w-md text-2xl text-cream md:text-3xl">
                             Reach out, or sign up for updates on our socials.
                         </h2>
+                        <p className="eyebrow mb-4 mt-4">Support available 24/7 </p>
                         <div className="mt-6 space-y-1 text-sm text-slate">
                             <p>
                                 <a href="mailto:reservations@boundlesslimousine.com" className="hover:text-cream">

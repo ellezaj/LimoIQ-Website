@@ -45,7 +45,7 @@ const tiers: Tier[] = [
     ],
   },
   {
-    name: "Plus",
+    name: "Pro",
     price: "$249",
     tagline: "Run day-to-day operations",
     featured: true,
@@ -78,7 +78,7 @@ const tiers: Tier[] = [
     ],
   },
   {
-    name: "Premium",
+    name: "Enterprise",
     price: "$549",
     tagline: "Full-service fleets with drivers on the road",
     groups: [
@@ -187,7 +187,7 @@ export default function Pricing() {
                     : "border border-panelLine text-cream hover:border-brass"
                 }`}
               >
-                {tier.free ? "Try for Free" : "Request a Demo"}
+                {tier.free ? "Start Free Trial" : "Get Started"}
               </a>
             </div>
           ))}
