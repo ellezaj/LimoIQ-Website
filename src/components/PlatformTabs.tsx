@@ -153,9 +153,9 @@ export default function PlatformTabs({
                         {collapseFeaturesAt && hiddenCount > 0 && (
                           <button
                             type="button"
-                            onClick={() =>
-                              setExpanded((prev) => ({ ...prev, [i]: !isExpanded }))
-                            }
+                            // onClick={() =>
+                            //   setExpanded((prev) => ({ ...prev, [i]: !isExpanded }))
+                            // }
                             className="mt-3 block text-xs font-medium text-brass hover:text-brass/80"
                           >
                             {isExpanded ? "Show fewer" : `+ ${hiddenCount} more features`}
