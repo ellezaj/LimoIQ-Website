@@ -82,11 +82,11 @@ const tiers: Tier[] = [
     price: "$549",
     tagline: "Full-service fleets with drivers on the road",
     groups: [
-      { label: "Customer App", items: ["Everything in Plus"] },
+      { label: "Customer App", items: ["Everything in Pro"] },
       {
         label: "Admin Dashboard",
         items: [
-          "Everything in Plus, plus:",
+          "Everything in Pro, plus:",
           "Settlement & payouts",
           "Event packages",
           "Alert rules",

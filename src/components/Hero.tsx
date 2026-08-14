@@ -42,7 +42,7 @@ export default function Hero() {
 				<div className="flex justify-center rounded-full">
 					{/* <ReservationWidget /> */}
 					<Image
-						src="/reservation_form.png"
+						src="/reservation-form.png"
 						alt="LIMO IQ reservation form"
 						width={420}
 						height={640}

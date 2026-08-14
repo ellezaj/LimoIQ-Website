@@ -13,8 +13,8 @@ export default function Header() {
 			<div className="container-content flex h-16 items-center justify-between">
 				<a href="/#" className="font-display text-lg tracking-tight text-cream">
 					<Image
-						src="/logo_transparent.png"
-						alt="LIMO IQ"
+						src="/logo-transparent.png"
+						alt="LIMO IQ Logo"
 						width={160}
 						height={40}
 						className="h-10 w-auto"
