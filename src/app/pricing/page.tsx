@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function PricingPage() {
   return (
-    <main className="bg-[#0E0E11]">
+    <main className="pricing-scrollbar relative flex h-screen w-screen flex-col overflow-y-auto bg-[#0E0E11]">
       <Pricing showTitle={false}/>
     </main>
   );

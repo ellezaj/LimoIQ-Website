@@ -27,6 +27,34 @@
     outline-offset: 3px;
   }
 }
+
+.pricing-scrollbar {
+  scrollbar-color: #6b7280 #15151a;
+  scrollbar-width: thin;
+}
+
+.pricing-scrollbar::-webkit-scrollbar {
+  width: 10px;
+}
+
+.pricing-scrollbar::-webkit-scrollbar-track {
+  background: #15151a;
+}
+
+.pricing-scrollbar::-webkit-scrollbar-thumb {
+  border: 3px solid #15151a;
+  border-radius: 999px;
+  background: #6b7280;
+}
+
+.pricing-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+.pricing-scrollbar::-webkit-scrollbar-corner {
+  background: #15151a;
+}
+
 .hero-container video{
       border-radius: inherit;
     height: 100%;

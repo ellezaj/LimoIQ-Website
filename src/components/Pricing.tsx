@@ -114,8 +114,8 @@ const tiers: Tier[] = [
 
 export default function Pricing({ showTitle }: { showTitle: boolean }) {
   return (
-    <section id="pricing" className={`border-t border-panelLine/60  
-      ${ showTitle ? "py-20 md:py-28" : "py-0" }
+    <section id="pricing" className={`  
+      ${ showTitle ? "py-20 md:py-28 border-t border-panelLine/60" : "py-0" }
     `}>
       <div className={`${ showTitle ? "container-content" : "" }`}>
         {showTitle && (
