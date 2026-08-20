@@ -12,34 +12,34 @@ type Slide = {
 
 const slides: Slide[] = [
   {
-    title: "Command Center",
+    title: "Customer App",
     description:
-      "A comprehensive dashboard giving you a bird's eye view of your entire operation.",
-    image: "/screenshots/tour/command.png"
+      "One-way, round trip, or hourly — customers book online in a few taps, with flight tracking, saved payment methods, and instant confirmation built in.",
+    image: "/screenshots/customer-overview.png"
   },
   {
-    title: "Mobile Management",
+    title: "Driver App",
     description:
-      "Manage your fleet from anywhere with our powerful mobile backend interface.",
-    image: "/screenshots/tour/mobile.png"
+      "Trip offers, real-time tracking, digital vehicle inspections, and payouts — everything a chauffeur needs on the road, in one app they'll actually want to use.",
+    image: "/screenshots/driver-overview.png"
   },
   {
-    title: "Intelligent Status",
+    title: "Admin Dashboard",
     description:
-      "Color-coded status updates keep dispatchers informed at a glance.",
-    image: "/screenshots/tour/intelligent.png"
+      "Dispatch, reservations, reporting, and CRM — a back office built around how operators actually work day to day, not retrofitted from generic taxi software.",
+    image: "/screenshots/admin-overview.png"
   },
   {
-    title: "Driver Portal",
+    title: "Dispatch App",
     description:
-      "Give your chauffeurs the tools they need to deliver exceptional service.",
-    image: "/screenshots/tour/driver.png"
+      "A live dispatch board that matches drivers to trips, flags conflicts before they happen, and lets dispatchers reassign in real time — even across multiple locations.",
+    image: "/screenshots/dispatch-overview.png"
   },
   {
-    title: "Passenger Booking",
+    title: "Add-on Modules",
     description:
-      "A seamless, high-end booking experience for your clients.",
-    image: "/screenshots/tour/passenger.png"
+      "Optional modules you can add to any plan — pick what your business actually needs, skip what it doesn't.",
+    image: "/screenshots/addons-overview.png"
   },
 ];
 
@@ -67,13 +67,11 @@ export default function TourPage() {
 
   return (
     <main className="relative flex h-screen w-screen flex-col overflow-hidden bg-ink px-6 py-6 text-cream md:px-12 md:py-10">
-      <TourWatermark />
+      {/* <TourWatermark /> */}
 
       {/* Top bar */}
       <div className="relative z-10 flex items-center justify-between">
         <p className="max-w-md text-sm text-slate md:text-base">
-          Take a closer look at the interface designed for efficiency and
-          elegance.
         </p>
 
         <div className="flex shrink-0 gap-3">
@@ -105,7 +103,7 @@ export default function TourPage() {
               <img
                 src={slide.image}
                 alt={slide.title}
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover object-top"
               />
             ) : (
               <div className="flex h-full w-full flex-col items-center justify-center gap-2 text-slate/40">
@@ -118,11 +116,11 @@ export default function TourPage() {
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink via-ink/10 to-transparent" />
 
             {/* Caption, overlaid bottom-left */}
-            <div className="absolute bottom-0 left-0 max-w-md p-8 md:p-12">
-              <h2 className="font-display text-3xl leading-tight text-cream md:text-4xl">
+            <div className="absolute bottom-0 left-0 p-3 md:p-4">
+              <div className="font-tour-title text-3xl leading-tight font-bold text-white md:text-4xl">
                 {slide.title}
-              </h2>
-              <p className="mt-3 text-sm leading-relaxed text-slate md:text-base">
+              </div>
+              <p className="font-tour-body mt-3 text-sm leading-relaxed text-[#A1A1AA] md:text-base">
                 {slide.description}
               </p>
             </div>

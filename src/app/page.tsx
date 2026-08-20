@@ -32,7 +32,7 @@ export default function Home() {
                     collapseFeaturesAt={5}
                 />
             </Suspense>
-            <Pricing />
+            <Pricing showTitle={true}/>
             <FAQ />
             <Contact />
             <Footer />

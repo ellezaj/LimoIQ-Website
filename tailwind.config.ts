@@ -21,6 +21,8 @@ const config: Config = {
       fontFamily: {
         display: ["var(--font-fraunces)", "Georgia", "serif"],
         body: ["var(--font-manrope)", "system-ui", "sans-serif"],
+        "tour-title": ["var(--font-playfair-display)", "Georgia", "serif"],
+        "tour-body": ["var(--font-inter)", "system-ui", "sans-serif"],
       },
       maxWidth: {
         content: "1200px",

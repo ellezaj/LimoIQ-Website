@@ -5,6 +5,7 @@ type Tier = {
   featured?: boolean;
   free?: boolean;
   groups: { label: string; items: string[] | null }[];
+  showTitle?: boolean;
 };
 
 const tiers: Tier[] = [
@@ -111,19 +112,25 @@ const tiers: Tier[] = [
   },
 ];
 
-export default function Pricing() {
+export default function Pricing({ showTitle }: { showTitle: boolean }) {
   return (
-    <section id="pricing" className="border-t border-panelLine/60 py-20 md:py-28">
-      <div className="container-content">
-        <p className="eyebrow mb-4">Pricing</p>
-        <h2 className="max-w-lg text-3xl text-cream md:text-4xl">
-          Start free. Upgrade as your fleet grows.
-        </h2>
-        <p className="mt-4 max-w-lg text-sm text-slate">
-          No per-trip fees — just one flat monthly price per tier.
-        </p>
+    <section id="pricing" className={`border-t border-panelLine/60  
+      ${ showTitle ? "py-20 md:py-28" : "py-0" }
+    `}>
+      <div className={`${ showTitle ? "container-content" : "" }`}>
+        {showTitle && (
+          <>
+            <p className="eyebrow mb-4">Pricing</p>
+            <h2 className="max-w-lg text-3xl text-cream md:text-4xl">
+              Start free. Upgrade as your fleet grows.
+            </h2>
+            <p className="mt-4 max-w-lg text-sm text-slate">
+              No per-trip fees — just one flat monthly price per tier.
+            </p>
+          </>
+        )}
 
-        <div className="mt-14 grid gap-3 md:grid-cols-2 lg:grid-cols-4">
+        <div className={`${ showTitle ? "mt-14" : "mt-4" } grid gap-3 md:grid-cols-2 lg:grid-cols-4`}>
           {tiers.map((tier) => (
             <div
               key={tier.name}

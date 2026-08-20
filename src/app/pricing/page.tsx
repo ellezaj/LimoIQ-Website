@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function PricingPage() {
   return (
     <main>
-      <Pricing />
+      <Pricing showTitle={false}/>
     </main>
   );
 }
