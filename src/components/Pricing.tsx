@@ -168,7 +168,7 @@ export default function Pricing({ showTitle }: { showTitle: boolean }) {
                       {group.label}
                     </p>
                     {group.items ? (
-                      <ul className="mt-2.5 space-y-2">
+                      <ul className={`${ showTitle ? "space-y-2" : "space-y-1" } mt-2.5`}>
                         {group.items.map((item) => (
                           <li
                             key={item}

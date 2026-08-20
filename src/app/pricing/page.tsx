@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function PricingPage() {
   return (
-    <main>
+    <main className="bg-[#0E0E11]">
       <Pricing showTitle={false}/>
     </main>
   );

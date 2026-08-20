@@ -66,7 +66,7 @@ export default function TourPage() {
   const slide = slides[active];
 
   return (
-    <main className="relative flex h-screen w-screen flex-col overflow-hidden bg-ink px-6 py-6 text-cream md:px-12 md:py-10">
+    <main className="relative flex h-screen w-screen flex-col overflow-hidden bg-[#0E0E11] px-6 py-6 text-cream md:px-12 md:py-10">
       {/* <TourWatermark /> */}
 
       {/* Top bar */}
@@ -96,7 +96,7 @@ export default function TourPage() {
 
       {/* Slide card */}
       <div className="relative z-10 flex flex-1 items-center justify-center py-6">
-        <div className="relative aspect-[16/10] w-full max-w-6xl overflow-hidden rounded-3xl border border-panelLine/60 bg-panel/30">
+        <div className="relative aspect-[16/10] w-full max-w-6xl overflow-hidden rounded-3xl border border-panelLine/60 bg-[#0E0E11]">
           <div key={active} className="animate-fade-in absolute inset-0">
             {/* Full-bleed screenshot */}
             {slide.image ? (
