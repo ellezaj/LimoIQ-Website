@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
-import Pricing from "@/components/Pricing";
+import CustomPricing from "@/components/CustomPricing";
 
 export const metadata: Metadata = {
   title: "Pricing | LIMO IQ",
@@ -11,7 +10,8 @@ export const metadata: Metadata = {
 export default function PricingPage() {
   return (
     <main className="pricing-scrollbar relative flex h-screen w-screen flex-col overflow-y-auto bg-[#0E0E11]">
-      <Pricing showTitle={false}/>
+      <CustomPricing />
+
     </main>
   );
 }

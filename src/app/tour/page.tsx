@@ -66,7 +66,7 @@ export default function TourPage() {
   const slide = slides[active];
 
   return (
-    <main className="relative flex h-screen w-screen flex-col overflow-hidden bg-[#0E0E11] px-6 py-6 text-cream md:px-12 md:py-10">
+    <main className="relative flex h-screen w-screen flex-col pricing-scrollbar overflow-y-auto bg-[#0E0E11] px-6 py-6 text-cream md:px-12 md:py-10">
       {/* <TourWatermark /> */}
 
       {/* Top bar */}
