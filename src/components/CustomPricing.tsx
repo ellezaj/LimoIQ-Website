@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { Check } from "lucide-react";
 
 const BASE_PRICE = 99;
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "http://app.limoiq.localtest.me";
 
 type AddOn = {
   id: string;
@@ -110,6 +111,18 @@ export default function CustomPricing() {
     );
   }, [selected]);
 
+  const selectedAddons = useMemo(() => {
+    return Object.entries(selected)
+      .filter(([_, active]) => active)
+      .map(([id]) => id)
+      .join(",");
+  }, [selected]);
+
+  const trialUrl = `${APP_URL}/register?plan=trial`;
+  const basicUrl = `${APP_URL}/register?plan=basic`;
+  const customUrl = `${APP_URL}/register?plan=custom${selectedAddons ? `&addons=${encodeURIComponent(selectedAddons)}` : ""}&total=${total}`;
+  const topTierUrl = `${APP_URL}/register?plan=top_tier`;
+
   function toggle(id: string) {
     setSelected((prev) => ({ ...prev, [id]: !prev[id] }));
   }
@@ -117,7 +130,6 @@ export default function CustomPricing() {
   return (
     <section className="py-0">
       <div className="">
-
         <div className="mt-1 grid gap-3 lg:grid-cols-5">
           {/* Free Trial */}
           <div className="flex flex-col rounded-2xl border border-panelLine bg-ink/40 py-4 px-5 lg:col-span-1">
@@ -140,7 +152,9 @@ export default function CustomPricing() {
               )}
             </ul>
             <a
-              href="#contact"
+              href={trialUrl}
+              target="_top"
+              rel="noopener noreferrer"
               className="mt-8 block rounded-full bg-brass px-6 py-3 text-center text-sm font-semibold text-ink transition-transform hover:-translate-y-0.5"
             >
               Try for Free
@@ -167,7 +181,9 @@ export default function CustomPricing() {
               ))}
             </ul>
             <a
-              href="#contact"
+              href={basicUrl}
+              target="_top"
+              rel="noopener noreferrer"
               className="mt-8 block rounded-full border border-brass/60 px-6 py-3 text-center text-sm font-medium text-brass transition-colors hover:bg-brass hover:text-ink"
             >
               Get Started
@@ -213,7 +229,9 @@ export default function CustomPricing() {
             </div>
 
             <a
-              href="#contact"
+              href={customUrl}
+              target="_top"
+              rel="noopener noreferrer"
               className="mt-6 block rounded-full bg-brass px-6 py-3 text-center text-sm font-semibold text-ink transition-transform hover:-translate-y-0.5"
             >
               Start Free Trial with Selected Features
@@ -240,7 +258,9 @@ export default function CustomPricing() {
               ))}
             </ul>
             <a
-              href="#contact"
+              href={topTierUrl}
+              target="_top"
+              rel="noopener noreferrer"
               className="mt-8 block rounded-full border border-brass/60 px-6 py-3 text-center text-sm font-medium text-brass transition-colors hover:bg-brass hover:text-ink"
             >
               Get Started
