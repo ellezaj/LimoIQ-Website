@@ -5,14 +5,15 @@ import { Menu, X } from "lucide-react";
 import { navLinks } from "@/lib/content";
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "http://app.limoiq.localtest.me";
-const TRIAL_URL = `${APP_URL}/register?plan=trial`;
+const LOGIN_URL = `${APP_URL}/login`;
+const REGISTER_URL = `${APP_URL}/register`;
 
 export default function LandingHeader() {
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
 
   return (
-    <header className="relative z-30 border-b border-iq-line bg-iq-bar">
+    <header className="relative z-50 border-b border-iq-line bg-iq-bar">
       <div className="iq-container flex h-[72px] items-center justify-between sm:h-20">
         <a
           href="#"
@@ -32,23 +33,36 @@ export default function LandingHeader() {
               {link.label}
             </a>
           ))}
-          <a
-            href={TRIAL_URL}
-            target="_top"
-            rel="noopener noreferrer"
-            className="ml-3 inline-flex h-10 items-center rounded-md bg-iq-gold px-5 font-iq text-sm font-medium text-iq-deep transition hover:brightness-110"
-          >
-            Get Started
-          </a>
+          <div className="ml-2 flex items-center gap-3">
+            <a
+              href={LOGIN_URL}
+              target="_top"
+              rel="noopener noreferrer"
+              className="inline-flex h-10 items-center rounded-md border border-iq-gold/80 px-4 font-iq text-sm font-medium text-iq-gold transition hover:border-iq-gold hover:bg-iq-gold/10"
+            >
+              Login
+            </a>
+            <a
+              href={REGISTER_URL}
+              target="_top"
+              rel="noopener noreferrer"
+              className="inline-flex h-10 items-center rounded-md bg-iq-gold px-5 font-iq text-sm font-medium text-iq-deep transition hover:brightness-110"
+            >
+              Get Started
+            </a>
+          </div>
         </nav>
 
         <button
           type="button"
-          onClick={() => setOpen((v) => !v)}
+          onClick={() => {
+            console.log("[LimoIQ] Hamburger toggle clicked. Current state:", open);
+            setOpen((v) => !v);
+          }}
           aria-expanded={open}
           aria-controls="mobile-nav"
           aria-label={open ? "Close menu" : "Open menu"}
-          className="flex h-10 w-10 items-center justify-center rounded-md text-white md:hidden"
+          className="relative z-50 flex h-10 w-10 cursor-pointer touch-manipulation select-none items-center justify-center rounded-md text-white transition hover:text-iq-gold md:hidden"
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
@@ -58,7 +72,7 @@ export default function LandingHeader() {
         <nav
           id="mobile-nav"
           aria-label="Main"
-          className="absolute inset-x-0 top-full border-b border-iq-line bg-iq-bar md:hidden"
+          className="absolute inset-x-0 top-full z-50 border-b border-iq-line bg-iq-bar shadow-2xl md:hidden"
         >
           <div className="iq-container flex flex-col py-3">
             {navLinks.map((link) => (
@@ -71,15 +85,26 @@ export default function LandingHeader() {
                 {link.label}
               </a>
             ))}
-            <a
-              href={TRIAL_URL}
-              target="_top"
-              rel="noopener noreferrer"
-              onClick={close}
-              className="mb-2 mt-3 inline-flex h-11 items-center justify-center rounded-md bg-iq-gold font-iq text-sm font-medium text-iq-deep"
-            >
-              Get Started
-            </a>
+            <div className="mb-2 mt-4 flex flex-col gap-2.5">
+              <a
+                href={LOGIN_URL}
+                target="_top"
+                rel="noopener noreferrer"
+                onClick={close}
+                className="inline-flex h-11 items-center justify-center rounded-md border border-iq-gold/80 font-iq text-sm font-medium text-iq-gold transition hover:border-iq-gold hover:bg-iq-gold/10"
+              >
+                Login
+              </a>
+              <a
+                href={REGISTER_URL}
+                target="_top"
+                rel="noopener noreferrer"
+                onClick={close}
+                className="inline-flex h-11 items-center justify-center rounded-md bg-iq-gold font-iq text-sm font-medium text-iq-deep transition hover:brightness-110"
+              >
+                Get Started
+              </a>
+            </div>
           </div>
         </nav>
       )}
