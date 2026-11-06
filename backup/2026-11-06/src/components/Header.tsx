@@ -5,6 +5,8 @@ import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import { featureGroups } from "@/lib/features";
 
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "http://app.limoiq.localtest.me";
+
 export default function Header() {
 	const [productsOpen, setProductsOpen] = useState(false);
 
@@ -93,7 +95,9 @@ export default function Header() {
 				</nav>
 
 				<a
-					href="/#contact"
+					href={`${APP_URL}/register?plan=trial`}
+					target="_top"
+					rel="noopener noreferrer"
 					className="rounded-full border border-brass/60 px-4 py-2 text-sm font-medium text-brass transition-colors hover:bg-brass hover:text-ink"
 				>
 					Start Free Trial
