@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, LayoutDashboard } from "lucide-react";
-import TourWatermark from "@/components/TourWatermark";
 
 type Slide = {
   title: string;
@@ -67,8 +66,6 @@ export default function TourPage() {
 
   return (
     <main className="relative flex h-screen w-screen flex-col pricing-scrollbar overflow-y-auto bg-[#0E0E11] px-6 py-6 text-cream md:px-12 md:py-10">
-      {/* <TourWatermark /> */}
-
       {/* Top bar */}
       <div className="relative z-10 flex items-center justify-between">
         <p className="max-w-md text-sm text-slate md:text-base">
